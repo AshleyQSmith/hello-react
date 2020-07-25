@@ -2,25 +2,51 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-// COMPOSING COMPONENTS
+// RENDERING LISTS
 
-// function Lake(props) {
-//   return <h1>{props.name}</h1>;
+// const lakeList = ["Echo Lake", "Cascade Lake", "Maud Lake"];
+
+// function App(props) {
+//   return (
+//     <ul>
+//       {props.lakes.map((lake) => (
+//         <li>{lake}</li>
+//       ))}
+//     </ul>
+//   );
 // }
 
-// or destructured:
-function Lake({ name }) {
-  return <h1>{name}</h1>;
-}
+// or DESTRUCTURED VERSION:
+// function App({ lakes }) {
+//   return (
+//     <ul>
+//       {lakes.map((lake) => (
+//         <li>{lake}</li>
+//       ))}
+//     </ul>
+//   );
+// }
 
-function App() {
+// RENDERING LISTS OF OBJECTS + ADDING KEYS: identifier for dynamically rendered elemtent, in this case the id (gets rid of console error)
+// FYI FOR ARRAY OF NUMBERS TO BE RENDERED WITHOUT ID, YOU CAN SET THE key={item.toString()}
+
+const lakeList = [
+  { id: "1", name: "Echo", trailhead: "Echo" },
+  { id: "2", name: "Velma", trailhead: "Bayview" },
+  { id: "3", name: "Maud", trailhead: "Wrights" },
+];
+
+function App({ lakes }) {
   return (
     <div>
-      <Lake name="Lake Tahoe" />
-      <Lake name="Angora Lake" />
-      <Lake name="Shirley Lake" />
+      {lakes.map((lake) => (
+        <div key={lake.id}>
+          <h1>{lake.name} Lake</h1>
+          <p>Accessed by {lake.trailhead} Trailhead</p>
+        </div>
+      ))}
     </div>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App lakes={lakeList} />, document.getElementById("root"));
