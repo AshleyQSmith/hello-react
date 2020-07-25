@@ -2,10 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-let city = {
-  name: "Boise",
-  country: "USA",
-};
+// JSX Syntax Example object:
+// let city = {
+//   name: "Boise",
+//   country: "USA",
+// };
+
+function Hello() {
+  return (
+    <div>
+      <h1>Welcome to React</h1>
+      <p>Let's get started</p>
+    </div>
+  );
+}
 
 ReactDOM.render(
   // React.createElement(
@@ -28,9 +38,13 @@ ReactDOM.render(
   //   <li>Pizza</li>
   // </ul>,
 
-  <h1 id="heading" className="cool-text">
-    Hello from {city.name} in {city.country}!
-  </h1>,
+  // <h1 id="heading" className="cool-text">
+  //   Hello from {city.name} in {city.country}!
+  // </h1>,
+
+  // CREATING A REACT COMPONENT
+
+  <Hello />,
 
   document.getElementById("root")
 );
