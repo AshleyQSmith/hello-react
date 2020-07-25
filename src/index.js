@@ -8,11 +8,26 @@ import "./index.css";
 //   country: "USA",
 // };
 
-function Hello() {
+// function Hello(props) {
+//   console.log(Object.keys(props));
+//   return (
+//     <div>
+//       <h1>Welcome to {props.library}!</h1>
+//       <p>Let's get started</p>
+//       <p>{props.message}</p>
+//       <p>{Object.keys(props).length} Props Total</p>
+//     </div>
+//   );
+// }
+
+// easier to read version: instead of passing in "props", you destructure values from the props object for brevity (shortening syntax). allows you to read exaclty the values
+function Hello({ library, message, number }) {
   return (
     <div>
-      <h1>Welcome to React</h1>
+      <h1>Welcome to {library}!</h1>
       <p>Let's get started</p>
+      <p>{message}</p>
+      <p>{number} Props Total</p>
     </div>
   );
 }
@@ -43,8 +58,9 @@ ReactDOM.render(
   // </h1>,
 
   // CREATING A REACT COMPONENT
+  // Adding properties to the react component
 
-  <Hello />,
+  <Hello library="React" message="Good Luck!" number={1} />,
 
   document.getElementById("root")
 );
