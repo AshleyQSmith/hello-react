@@ -2,21 +2,31 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-function Checkbox() {
-  const [checked, setChecked] = useState(false);
+function App() {
+  const [val, setVal] = useState("");
+  const [val2, setVal2] = useState("");
+
+  // dependancy array added to useEffect - second argument sent. its the state variable we want to listen to changes in - limits scope/smart rendering.
+
   useEffect(() => {
-    alert(`checked: ${checked.toString()}`);
-  });
+    console.log(`field 1: ${val}`);
+  }, [val]);
+  useEffect(() => {
+    console.log(`field 2: ${val2}`);
+  }, [val2]);
   return (
     <>
-      <input
-        type="checkbox"
-        value={checked}
-        onChange={() => setChecked((checked) => !checked)}
-      />
-      {checked ? "checked" : "not checked"}
+      <label>
+        Fave phrase: {val}
+        <input value={val} onChange={(e) => setVal(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        2nd Fave phrase: {val2}
+        <input value={val2} onChange={(e) => setVal2(e.target.value)} />
+      </label>
     </>
   );
 }
 
-ReactDOM.render(<Checkbox />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
